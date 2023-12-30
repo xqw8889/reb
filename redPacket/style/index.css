@@ -1,0 +1,77 @@
+#redPacketsContainer,
+.red-packet,
+img {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#redPacketsContainer {
+    top: 0;
+    left: 0;
+    position: fixed;
+
+}
+
+
+.red-packet img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.red-packet {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+/* 点击动画 */
+.red-packet__open--opening {
+    animation: rotate 1s infinite;
+    position: absolute;
+    top: var(--y-pos);
+    left: var(--x-pos);
+}
+
+/* 漂浮动画 */
+.red-packet__ani--opening {
+    animation: horizontal var(--time) infinite var(--delay1) linear alternate,
+        vertical var(--time2) infinite var(--delay2) linear alternate;
+    animation-composition: accumulate;
+}
+
+.red-packet__ani--opening:hover {
+    animation-play-state: paused;
+}
+
+@keyframes horizontal {
+    from {
+        transform: translateX(var(--posvw));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes vertical {
+    from {
+        transform: translateY(var(--posvh));
+    }
+
+    to {
+        transform: translateY(calc(90vh - 100%));
+    }
+}
+
+
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
